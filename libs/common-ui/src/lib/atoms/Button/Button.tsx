@@ -1,3 +1,5 @@
+import type { ComponentProps, FormEventHandler } from 'react';
+import clsx from 'clsx';
 // colors from palette: https://flatuicolors.com/palette/defo
 // to demonstrate there can be also color a set
 // 💡 we can also create colors using Record utility type but need to specify all keys
@@ -34,8 +36,20 @@ type Props = {
   label: string;
   bgColor?: ColorType;
   color?: ColorType;
-  onClick?: MouseEventHandler<HTMLButtonElement>;
-  className?: string;
+  // onClick?: MouseEventHandler<HTMLButtonElement>;
+  // className?: string;
+};
+
+const UserForm = () => {
+  const handleClick: MouseEventHandler<HTMLButtonElement> = () => {
+    console.log('something');
+  };
+
+  return (
+    <div>
+      <Button label="Click me!" onClick={handleClick} />
+    </div>
+  );
 };
 
 export const Button = ({
@@ -44,18 +58,30 @@ export const Button = ({
   color,
   onClick,
   className,
-}: Props) => {
+  ...rest
+}: ComponentProps<'button'> & Props) => {
   const _color = color ? colors[color] : '';
   const _bgColor = bgColor ? colors[bgColor] : '';
+
+  const classes = clsx(
+    'px-4 py-1',
+    'text-sm text-white',
+    'bg-blue-600',
+    'font-semibold',
+    'rounded-full border border-blue-200',
+    'hover:text-white hover:bg-blue-500 hover:border-transparent',
+    className
+  );
 
   return (
     <button
       onClick={onClick}
-      className={className}
+      className={classes}
       style={{
         color: _color,
         backgroundColor: _bgColor,
       }}
+      {...rest}
     >
       {label}
     </button>
