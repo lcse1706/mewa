@@ -66,6 +66,9 @@
           "quiet": true
         }
       }
+    },
+    "chromatic": {
+      "command": "npx nx build-storybook common-ui && npx chromatic --project-token=chpt_8a300b9bcb27814 -d=dist/storybook/common-ui"
     }
   }
 }
