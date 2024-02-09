@@ -2,7 +2,9 @@
   "name": "@ems/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "chromatic": "npx chromatic --project-token=chpt_8a300b9bcb27814 -d=dist/storybook/common-ui"
+  },
   "private": true,
   "dependencies": {
     "@nestjs/common": "^10.0.2",
@@ -71,6 +73,7 @@
     "@vitest/ui": "~0.32.0",
     "autoprefixer": "^10.4.14",
     "babel-jest": "^29.4.1",
+    "chromatic": "^10.9.2",
     "cypress": "^12.16.0",
     "eslint": "~8.15.0",
     "eslint-config-next": "13.4.1",
