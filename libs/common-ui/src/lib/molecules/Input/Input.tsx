@@ -1,6 +1,7 @@
 import type { ComponentProps } from 'react';
 import clsx from 'clsx';
 import { v4 as uuidv4 } from 'uuid';
+import { Label } from '../../atoms/Label';
 
 type Props = {
   label: string;
@@ -27,7 +28,7 @@ export const Input = ({
 
   return (
     <div>
-      <label htmlFor={id}>{label}</label>
+      <Label id={id}>{label}</Label>
       <input
         id={id}
         type={type}
