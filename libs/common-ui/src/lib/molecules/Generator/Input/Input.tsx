@@ -11,6 +11,8 @@ export const Input = ({
   label,
   placeholder,
   className,
+  value,
+  onChange,
   ...rest
 }: ComponentProps<'input'> & Props) => {
   const id = uuidv4();
@@ -31,6 +33,8 @@ export const Input = ({
         type={type}
         placeholder={placeholder}
         className={classes}
+        defaultValue={value}
+        onChange={onChange}
         {...rest}
       />
     </div>
