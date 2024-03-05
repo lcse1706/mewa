@@ -11,7 +11,7 @@ describe('Button component', () => {
     // debug();
     const result = await axe(container);
 
-    // expect(screen.getByText('Click me', { exact: false })).toBeInTheDocument();
+    expect(screen.getByText('Click me', { exact: false })).toBeInTheDocument();
     expect(result).toHaveNoViolations();
   });
 });
