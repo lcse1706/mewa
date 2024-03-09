@@ -1,12 +1,11 @@
 /// <reference types="vitest" />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
+import viteTsConfigPaths from 'vite-tsconfig-paths';
 import dts from 'vite-plugin-dts';
 import * as path from 'path';
 
 export default defineConfig({
-  root: __dirname,
   cacheDir: '../../node_modules/.vite/common-ui',
 
   plugins: [
@@ -16,7 +15,9 @@ export default defineConfig({
       skipDiagnostics: true,
     }),
     react(),
-    nxViteTsPaths(),
+    viteTsConfigPaths({
+      root: '../../',
+    }),
   ],
 
   // Uncomment this if you are using workers.
@@ -31,9 +32,6 @@ export default defineConfig({
   // Configuration for building your library.
   // See: https://vitejs.dev/guide/build.html#library-mode
   build: {
-    outDir: '../../dist/libs/common-ui',
-    reportCompressedSize: true,
-    commonjsOptions: { transformMixedEsModules: true },
     lib: {
       // Could also be a dictionary or array of multiple entry points.
       entry: 'src/index.ts',

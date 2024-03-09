@@ -6,8 +6,11 @@
   "tags": [],
   "targets": {
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/common-ui/**/*.{ts,tsx,js,jsx}"]
+      }
     },
     "build": {
       "executor": "@nx/vite:build",
@@ -30,10 +33,13 @@
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
         "jestConfig": "libs/common-ui/jest.config.ts",
+        "passWithNoTests": true,
         "watch": true
       },
       "configurations": {
         "ci": {
+          "ci": true,
+          "codeCoverage": true,
           "watch": false
         }
       }
