@@ -6,7 +6,7 @@ export default async function Index() {
    */
   return (
     <div>
-      <h1>Hello from home !</h1>
+      <h1>Hello from home!</h1>
     </div>
   );
 }

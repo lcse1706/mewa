@@ -4,9 +4,9 @@ type Props = {
   children: string | undefined;
 };
 
-export const Header = ({ children }: ComponentProps<'header'> & Props) => {
+export const Header = ({ children }: ComponentProps<'h1'> & Props) => {
   return (
     // <header className="text-3xl font-bold dark:text-white">{children}</header>
-    <header className="text-3xl font-bold">{children}</header>
+    <h1 className="text-3xl font-bold">{children}</h1>
   );
 };
