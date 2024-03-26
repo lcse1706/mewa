@@ -1,6 +1,6 @@
 [build]
 builder = "NIXPACKS"
-buildCommand = "npx nx run website:build:production --verbose"
+buildCommand = "npx nx run website:build:production"
 watchPatterns = ["/apps/website/**"]
 
 [deploy]
