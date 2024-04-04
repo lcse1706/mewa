@@ -20,7 +20,7 @@ type AirtableReviewResponseDto = {
 
 export const fetchReviews = async () => {
   const response = await fetch(
-    `${process.env.AIRTABLE_BASE_URL}/Table%201?maxRecords=3&view=Grid%20view&sort%5B0%5D%5Bfield%5D=created_at&sort%5B0%5D%5Bdirection%5D=desc`,
+    `${process.env.AIRTABLE_BASE_URL}/Table%201?view=Grid%20view&sort%5B0%5D%5Bfield%5D=created_at&sort%5B0%5D%5Bdirection%5D=desc`,
     {
       headers: {
         Authorization: `Bearer ${process.env.AIRTABLE_API_TOKEN}`,
