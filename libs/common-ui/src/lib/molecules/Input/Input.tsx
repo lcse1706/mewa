@@ -1,40 +1,38 @@
-import { forwardRef, type ComponentProps, type Ref } from 'react';
-import clsx from 'clsx';
-import { v4 as uuidv4 } from 'uuid';
-import { Label } from '../../atoms/Label';
+import {
+  forwardRef,
+  type ForwardedRef,
+  type ComponentPropsWithRef,
+} from 'react';
+import { FieldError } from 'react-hook-form';
 
-type Props = ComponentProps<'input'> & {
+import { classMerge } from '../../utils/cn';
+import { Label } from '../../atoms';
+
+type Props = {
   label: string;
-};
+  error?: FieldError;
+} & ComponentPropsWithRef<'input'>;
 
 export const Input = forwardRef(
   (
-    { type, label, placeholder, className, value, onChange, ...rest }: Props,
-    ref: Ref<HTMLInputElement>
+    { label, error, className, ...rest }: Props,
+    ref: ForwardedRef<HTMLInputElement>
   ) => {
-    const id = uuidv4();
-    const classes = clsx(
-      'block',
-      'mb-4',
-      'border',
-      'border-gray-300',
-      'rounded-md',
-      className
-    );
-
+    // id is needed to provide accessibility and point which label is for which field
+    const id = label.replace(' ', '-').toLocaleLowerCase();
     return (
-      <div>
+      <div className="my-2">
         <Label id={id}>{label}</Label>
         <input
           id={id}
-          type={type}
           ref={ref}
-          placeholder={placeholder}
-          className={classes}
-          defaultValue={value}
-          onChange={onChange}
+          className={classMerge(
+            'block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:wa-blue sm:text-sm sm:leading-6',
+            className
+          )}
           {...rest}
         />
+        {error && <p className="text-red-500">{error.message}</p>}
       </div>
     );
   }
