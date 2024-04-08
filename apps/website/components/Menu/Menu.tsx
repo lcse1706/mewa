@@ -12,7 +12,7 @@ export const Menu = () => {
   // console.log({ pathName });
 
   const buildCssClass = (path: string) => {
-    return classMerge('text-lg', { 'text-red-400': path === pathName });
+    return classMerge('text-lg', { 'text-red-400': pathName.includes(path) });
   };
 
   return (
