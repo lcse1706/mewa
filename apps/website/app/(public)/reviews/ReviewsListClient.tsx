@@ -37,7 +37,7 @@ export const ReviewsList = () => {
 
   useEffect(() => {
     fetch(
-      'https://api.airtable.com/v0/app5iC8Z9F2RVt9dv/Table%201?maxRecords=3&view=Grid%20view&sort%5B0%5D%5Bfield%5D=created_at&sort%5B0%5D%5Bdirection%5D=desc',
+      'https://api.airtable.com/v0/app5iC8Z9F2RVt9dv/reviews?view=Grid%20view&sort%5B0%5D%5Bfield%5D=created_at&sort%5B0%5D%5Bdirection%5D=desc',
       {
         headers: {
           Authorization: `Bearer ${process.env.NEXT_PUBLIC_AIRTABLE_API_TOKEN}`,
