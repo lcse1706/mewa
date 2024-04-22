@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "chromatic": "npx chromatic --project-token=chpt_8a300b9bcb27814 -d=dist/storybook/common-ui"
+    "chromatic": "npx chromatic --project-token=chpt_8a300b9bcb27814 -d=dist/storybook/common-ui",
+    "generate:types": "nx run prisma-schema:generate-types",
+    "postinstall": "npm run generate:types",
+    "build": "npm run generate:types && nx run website:build:production"
   },
   "private": true,
   "dependencies": {
