@@ -6,6 +6,7 @@ import {
 } from '@nestjs/common';
 import { Review } from './entities/review.entity';
 import { CreateReviewDto } from './dtos/create-review.dto';
+import { UpdateReviewDto } from './dtos/update-review.dto';
 
 const reviews: Review[] = [
   { id: 1, content: 'Lorem ipsum', rate: 4 },
@@ -31,6 +32,11 @@ export class ReviewsService {
   createReview(createReviewDto: CreateReviewDto) {
     // reviews.push(data);
     return createReviewDto;
+  }
+
+  updateReview(id: string, updateReviewDto: UpdateReviewDto) {
+    // reviews.push(data);
+    return updateReviewDto;
   }
 
   deleteReview(id: string) {
