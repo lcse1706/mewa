@@ -14,7 +14,11 @@ export class ReviewsService {
   }
 
   getReview(id: string): Review {
-    return reviews.find((item) => item.id === +id);
+    const review = reviews.find((item) => item.id === +id);
+    if (!review) {
+      throw new Error('not found');
+    }
+    return review;
   }
 
   createReview(data: Review) {
