@@ -13,8 +13,8 @@ export class ReviewsService {
     return reviews;
   }
 
-  getReview(id: Review['id']): Review {
-    return reviews[0];
+  getReview(id: string): Review {
+    return reviews.find((item) => item.id === +id);
   }
 
   createReview(data: Review) {
@@ -22,7 +22,7 @@ export class ReviewsService {
     return data;
   }
 
-  deleteReview(id: Review['id']) {
+  deleteReview(id: string) {
     return null;
   }
 }

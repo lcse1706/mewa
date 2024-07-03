@@ -18,17 +18,17 @@ export class ReviewsController {
   @Get()
   getReviews(@Query() query) {
     const { page, offset } = query;
-    // return this.reviewsService.getReviews(page, offset);
-    return this.reviewsService.getReviews();
+    return this.reviewsService.getReviews(page, offset);
+    // return this.reviewsService.getReviews();
   }
 
   @Get(':id')
-  getReview(@Param(':id') id: number) {
+  getReview(@Param('id') id: string) {
     return this.reviewsService.getReview(id);
   }
 
   @Delete(':id')
-  async deleteReview(@Param(':id') id: number) {
+  async deleteReview(@Param('id') id: string) {
     await this.reviewsService.deleteReview(id);
     return {};
   }
