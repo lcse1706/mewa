@@ -7,11 +7,14 @@ import {
   Patch,
   Post,
   Query,
+  UseFilters,
 } from '@nestjs/common';
 import { ReviewsService } from './reviews.service';
 import { CreateReviewDto } from './dtos/create-review.dto';
 import { UpdateReviewDto } from './dtos/update-review.dto';
+import { HttpExceptionFilter } from '../filters/http-exception-filter';
 
+@UseFilters(new HttpExceptionFilter())
 @Controller('reviews') // http://localhost:3000/api/reviews
 export class ReviewsController {
   constructor(private readonly reviewsService: ReviewsService) {}
