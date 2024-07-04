@@ -15,7 +15,7 @@ async function bootstrap() {
     new ValidationPipe({
       whitelist: true, // it will read only assumed properties, and skip every which is not in type.
       forbidNonWhitelisted: true, // throw error and show what data is not correct. Developer mode, In production can be helpful  for hacker
-      transform: true, // check if data are instance of TS type - helpful while we need typ checking in app
+      transform: true, // It make types fit. Check if data are instance of TS type - helpful while we need typ checking in app.
     })
   );
   app.setGlobalPrefix(globalPrefix);

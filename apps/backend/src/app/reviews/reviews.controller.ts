@@ -24,12 +24,13 @@ export class ReviewsController {
   }
 
   @Get(':id')
-  getReview(@Param('id') id: string) {
+  getReview(@Param('id') id: number) {
+    console.log(id);
     return this.reviewsService.getReview(id);
   }
 
   @Delete(':id')
-  async deleteReview(@Param('id') id: string) {
+  async deleteReview(@Param('id') id: number) {
     await this.reviewsService.deleteReview(id);
     return {};
   }
@@ -40,7 +41,7 @@ export class ReviewsController {
   }
   @Patch(':id')
   updateReview(
-    @Param('id') id: string,
+    @Param('id') id: number,
     @Body() updateReviewDto: UpdateReviewDto
   ) {
     return this.reviewsService.updateReview(id, updateReviewDto);
