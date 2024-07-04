@@ -13,10 +13,10 @@ export class HttpExceptionFilter<T extends HttpException>
   catch(exception: T, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<Response>();
+    const request = ctx.getRequest<Request>();
 
     const status = exception.getStatus();
     const exceptionResponse = exception.getResponse();
-
     const error =
       typeof response === 'string'
         ? { message: exceptionResponse }
@@ -25,6 +25,7 @@ export class HttpExceptionFilter<T extends HttpException>
     response.status(status).json({
       ...error,
       timestamp: new Date().toISOString(),
+      path: request.url,
     });
   }
 }
