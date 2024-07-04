@@ -20,16 +20,18 @@ import { PrismaService } from '../prisma.service';
 export class ReviewsService {
   constructor(private prisma: PrismaService) {}
   async getReviews(page?: number, offset?: number): Promise<Review[]> {
-    console.log(await this.prisma.review.findMany());
+    // console.log(await this.prisma.review.findMany());
     // return reviews;
     return await this.prisma.review.findMany();
   }
 
   async getReview(id: Review['id']): Promise<Review> {
-    // const review = reviews.find((item) => item.id === +id);
-    const review = await this.prisma.review.findUnique({ where: { id } });
+    // const review: Review = reviews.find((item) => item.id === id);
+    const review: Review = await this.prisma.review.findFirst({
+      where: { id },
+    });
     if (!review) {
-      // thorw new Error('Review not found')
+      // throw new Error('Review not found');
       // throw new HttpException('Review not found', HttpStatus.NOT_FOUND);
       throw new NotFoundException('Review not found');
     }
@@ -37,7 +39,8 @@ export class ReviewsService {
   }
 
   createReview(createReviewDto: CreateReviewDto) {
-    // reviews.push(data);
+    // TODO:
+    // reviews.push(createReviewDto);
     return createReviewDto;
   }
 
