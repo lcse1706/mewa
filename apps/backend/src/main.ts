@@ -22,7 +22,7 @@ async function bootstrap() {
   );
   app.setGlobalPrefix(globalPrefix);
   app.useGlobalFilters(new HttpExceptionFilter());
-  app.useGlobalGuards(new ApiGuard());
+  // app.useGlobalGuards(new ApiGuard());
   app.enableCors();
   const port = process.env.PORT || 3000;
   await app.listen(port);
