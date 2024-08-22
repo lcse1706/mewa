@@ -14,7 +14,7 @@ import { CreateOfferDto } from './dtos/create-offer.dto';
 import { UpdateOfferDto } from './dtos/update-offer.dto';
 import { HttpExceptionFilter } from '../filters/http-exception-filter';
 
-@Controller('offers') // http://localhost:3002/api/offers
+@Controller('offers') // http://localhost:3000/api/offers
 export class OffersController {
   constructor(private readonly offersService: OffersService) {}
 
