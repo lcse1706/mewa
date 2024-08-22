@@ -1,21 +1,24 @@
 import { Button, Input } from '@ems/common-ui';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { createOfferSchema, CreateReviewDto } from './types';
+import { createOfferSchema, CreateOfferDto } from './types';
 import { zodResolver } from '@hookform/resolvers/zod';
-export const CreateOffer = () => {
-  // const [isError, setIsError] = useState(false);
-  // const { push, refresh } = useRouter();
-  // const [isPending, startTransition] = useTransition();
+
+type Props = {
+  createOffer: (data: CreateOfferDto) => void;
+};
+
+export const CreateOffer = ({ createOffer }: Props) => {
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting, isValid },
-  } = useForm<CreateReviewDto>({
+  } = useForm<CreateOfferDto>({
     resolver: zodResolver(createOfferSchema),
   });
 
-  const submitHandler: SubmitHandler<CreateReviewDto> = async (data) => {
+  const submitHandler: SubmitHandler<CreateOfferDto> = async (data) => {
     console.log({ data });
+    createOffer(data);
   };
 
   return (
