@@ -11,6 +11,7 @@ import { useState } from 'react';
 
 import { worker } from './mocks/browser';
 import { CreateOfferPage } from './pages/CreateOfferPage';
+import { OffersPage } from './pages/OffersPage';
 
 // Start the mocking conditionally.
 if (process.env.NODE_ENV === 'development') {
@@ -46,6 +47,10 @@ export function App() {
         {
           path: ROUTE.EMPLOYEES,
           element: <ProtectedRoute user={user} element={<EmployeesPage />} />,
+        },
+        {
+          path: ROUTE.OFFERS,
+          element: <OffersPage />,
         },
         {
           path: ROUTE.OFFERS_CREATE,
