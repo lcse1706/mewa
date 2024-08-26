@@ -6,6 +6,7 @@ import {
 } from '@nestjs/common';
 
 import { type Offer } from '@prisma/client';
+import { OffersListDto } from '@ems/contracts';
 
 import { CreateOfferDto } from './dtos/create-offer.dto';
 import { UpdateOfferDto } from './dtos/update-offer.dto';
@@ -15,8 +16,16 @@ import { PrismaService } from '../prisma.service';
 export class OffersService {
   constructor(private prisma: PrismaService) {}
 
-  async getOffers(page?: number, offset?: number): Promise<Offer[]> {
-    return await this.prisma.offer.findMany();
+  async getOffers(page?: number, offset?: number): Promise<OffersListDto[]> {
+    return await this.prisma.offer.findMany({
+      select: {
+        public_id: true,
+        role: true,
+        description: true,
+        salary: true,
+        created_at: true,
+      },
+    });
   }
 
   async getOffer(id: Offer['public_id']): Promise<Offer> {
